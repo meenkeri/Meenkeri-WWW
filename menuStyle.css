@@ -2,16 +2,15 @@
 
 #sse1
 {
-    /*You can decorate the menu's container, such as adding background images through this block*/
-    background-color: #222;
+    /* Decoration for the menu's container block */
+    background-color: black;
     height: 38px;
     padding: 15px;
     border-radius: 3px;
-    box-sizing: content-box;
 }
 #sses1
 {
-    margin:0 auto;/*This will make the menu center-aligned. Removing this line will make the menu align left.*/
+    margin:0 auto;/*Make the menu center-aligned. Else it will align left.*/
 }
 #sses1 ul 
 { 
@@ -30,7 +29,7 @@
 /*CSS for background bubble*/
 #sses1 li.highlight
 {
-    background-color:#800;
+    background-color: red;
     top:36px;
     height:2px;
     border-bottom:solid 1px #C00;
@@ -40,7 +39,6 @@
 }
 #sses1 li a
 {
-    box-sizing: content-box;
     height:30px;
     padding-top: 8px;
     margin: 0 20px;/*used to adjust the distance between each menu item. Now the distance is 20+20=40px.*/
