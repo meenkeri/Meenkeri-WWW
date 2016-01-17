@@ -19,12 +19,15 @@
 </div>
 
 <p>Click the recall button to stop the words and to recall</p>
+
 <p>Word#<span id="wordNumber"></span> <span id="word"></span></p>
 
 <button onclick="generateRandomWord()">Next</button>
+<button id="recall" onclick="">Recall</button>
 
 <script type="text/javascript">
-var i = 1;
+var i = 0;
+var correct = 0;
 function generateRandomWord() {
 	$(document).ready(function() {
 	var hasDictionaryDef = true; // Should the word be defined in the dictionary?
@@ -32,8 +35,8 @@ function generateRandomWord() {
 	var excludePartOfSpeech = ""; // CSV part-of-speech values to exclude
 	var minCorpusCount = 1000000; // Minimum frequency of occurance of the word. Higher the value, the more common the word
 	var maxCorpusCount = -1; // Maximum frequency of occurance of the word
-		var minDictionaryCount = 1; // Minimum dictionary count
-		var maxDictionaryCount = -1; // Maximum dictionary count
+	var minDictionaryCount = 1; // Minimum dictionary count
+	var maxDictionaryCount = -1; // Maximum dictionary count
 	var minLength = 2; // Minimum word length
 	var maxLength = -1; // Maximum word length
 	
@@ -51,7 +54,7 @@ function generateRandomWord() {
         		"&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5"
     }).then(function(data) {
     	document.getElementById("word").innerHTML = data.word;
-    	document.getElementById("wordNumber").innerHTML = i++;
+    	document.getElementById("wordNumber").innerHTML = ++i;
     });
 });
 }
