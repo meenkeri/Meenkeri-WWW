@@ -23,11 +23,22 @@
 <p>Word#<span id="wordNumber"></span> <span id="word"></span></p>
 
 <button onclick="generateRandomWord()">Next</button>
-<button id="recall" onclick="">Recall</button>
+<button onclick="recall()">Recall</button>
+
+<p>Word#<span id="recallWordNumber"></span> <input type="text" id="inputWord"> </p>
+<button onclick="recallNext()">Next</button>
+<button onclick="skipWord()">Skip</button>
+
+<br/>
+<br/>
+
+<button onclick="hintWord()">Hint word</button><p>Hint word: </p>
+<button onclick="hintValue()">Actual word</button> <p>Word: <span id="actualValue"></span></p>
 
 <script type="text/javascript">
 var i = 0;
-var correct = 0;
+var j = 0;
+var list = [];
 function generateRandomWord() {
 	$(document).ready(function() {
 	var hasDictionaryDef = true; // Should the word be defined in the dictionary?
@@ -53,10 +64,35 @@ function generateRandomWord() {
         		"&maxLength=" + maxLength +
         		"&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5"
     }).then(function(data) {
-    	document.getElementById("word").innerHTML = data.word;
+    	var word = data.word;
+    	list[i] = word;
+    	document.getElementById("word").innerHTML = word;
     	document.getElementById("wordNumber").innerHTML = ++i;
     });
 });
+}
+
+function recall() {
+	document.getElementById("recallWordNumber").innerHTML = ++j;
+}
+
+function recallNext() {
+	var word = document.getElementById("inputWord").value;
+	document.getElementById("inputWord").value = '';
+	if (word == list[j-1]) {
+		alert("Correct");
+		j++;
+	}
+	else
+		alert("Try again");
+}
+
+function hintValue() {
+	document.getElementById("actualValue").innerHTML = list[j-1];
+}
+
+function skipWord() {
+	j++;
 }
 </script>
 </body>
