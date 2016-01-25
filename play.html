@@ -82,6 +82,7 @@ function recallNext() {
 	if (word == list[j-1]) {
 		alert("Correct");
 		j++;
+		document.getElementById("recallWordNumber").innerHTML = j;
 	}
 	else
 		alert("Try again");
