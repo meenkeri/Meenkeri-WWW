@@ -73,7 +73,8 @@ function generateRandomWord() {
 }
 
 function recall() {
-	document.getElementById("recallWordNumber").innerHTML = ++j;
+	j = 1;
+	document.getElementById("recallWordNumber").innerHTML = j;
 }
 
 function recallNext() {
@@ -94,6 +95,7 @@ function hintValue() {
 
 function skipWord() {
 	j++;
+	document.getElementById("recallWordNumber").innerHTML = j;
 }
 </script>
 </body>
