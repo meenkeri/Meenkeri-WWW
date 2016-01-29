@@ -32,13 +32,14 @@
 <br/>
 <br/>
 
-<button onclick="hintWord()">Hint word</button><p>Hint word: </p>
+<button onclick="getHintWord()">Hint word</button> <p>Hint word: <span id="hint"></span></p>
 <button onclick="hintValue()">Actual word</button> <p>Word: <span id="actualValue"></span></p>
 
 <script type="text/javascript">
 var i = 0;
 var j = 0;
 var list = [];
+var hintWords = ["Tie", "Knee", "Ma", "Ray", "Law", "Jaw", "Key", "Fox", "Box", "Toes"];
 function generateRandomWord() {
 	$(document).ready(function() {
 	var hasDictionaryDef = true; // Should the word be defined in the dictionary?
@@ -50,7 +51,7 @@ function generateRandomWord() {
 	var maxDictionaryCount = -1; // Maximum dictionary count
 	var minLength = 2; // Minimum word length
 	var maxLength = -1; // Maximum word length
-	
+
 	// Visit http://developer.wordnik.com/docs.html#!/words/getRandomWord_get_4 for the web service source
     $.ajax({
         url: "http://api.wordnik.com:80/v4/words.json/randomWord?" + 
@@ -96,6 +97,10 @@ function hintValue() {
 function skipWord() {
 	j++;
 	document.getElementById("recallWordNumber").innerHTML = j;
+}
+
+function getHintWord() {
+	document.getElementById("hint").innerHTML = hintWords[j > 0 ? j : i];
 }
 </script>
 </body>
