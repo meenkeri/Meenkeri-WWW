@@ -110,7 +110,7 @@ function skipWord() {
 }
 
 function getHintWord() {
-	document.getElementById("hint").innerHTML = hintWords[j > 0 ? j : i];
+	document.getElementById("hint").innerHTML = hintWords[j > 0 ? j-1 : i-1];
 }
 </script>
 </body>
